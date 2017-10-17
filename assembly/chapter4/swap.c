@@ -31,3 +31,8 @@ void char_swap(char *x, char *y)
     *x = temp2;
     *y = temp;
 }
+
+int main(void)
+{
+    return 0;
+}

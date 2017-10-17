@@ -1,12 +1,14 @@
 #include <stdio.h>
 
-int sum(int start, int end)
+long sum(long start, long end)
 {
-    int result = 0;
-    int i;
+    long result = 0;
+    long i = start;
 
-    for(i = start; i <= end; i++)
+    do {
         result += i;
+        i++;
+    }while(i <= end);
 
     return result;
 }
