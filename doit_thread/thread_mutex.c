@@ -12,11 +12,11 @@ void *thread_function(void *data)
     int i = 0;
     for(i = 0; i < 5; i++)
     {
-        pthread_mutex_lock(&mutex);
+        // pthread_mutex_lock(&mutex);
         num++;
         printf("%s\t : %d \n", (char *)data, num);
-        pthread_mutex_unlock(&mutex);
-        sleep(1);
+        // pthread_mutex_unlock(&mutex);
+        // sleep(1);
     }
 }
 

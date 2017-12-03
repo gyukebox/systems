@@ -3,27 +3,28 @@
 
 int main(void)
 {
-    pid_t pid;
+    pid_t child;
 
     printf("Before fork: %d \n", getpid());
 
-    pid = fork();
+    child = fork();
 
-    if(pid == 0)
+    if(child == 0)
     {
         printf("Child process id: %d \n", getpid());
-        printf("pid :: %d \n", pid);
+        printf("pid :: %d \n", child);
     }
-    else if(pid > 0)
+    else if(child > 0)
     {
         printf("Parent process id: %d \n", getpid());
-        printf("pid :: %d \n", pid);
+        printf("pid :: %d \n", child);
     }
     else
     {
-        printf("Fork failed: %d \n", pid);
+        printf("Fork failed: %d \n", child);
     }
 
+    printf("Hello! \n");
 
     return 0;
 }

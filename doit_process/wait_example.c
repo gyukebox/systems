@@ -1,37 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 int main(void)
 {
-    pid_t pid, child_id;
-    int data;
-    int state;
+    pid_t child;
 
-    data = 10;
-    pid = fork();
+    child = fork();
 
-    if(pid < 0)
+    if(child == 0)
     {
-        printf("Failed to fork \n");
+        int i;
+        for(i = 0; i < 10; i++)
+        {
+            printf("%d from %d \n", i, getpid());
+            sleep(1);
+        }
     }
     else
     {
-        printf("Success to fork: %d \n", pid);
+        int i;
+        for(i = 0; i < 5; i++)
+        {
+            printf("%d from %d \n", i, getpid());
+        }
+        wait(NULL);
     }
-
-    if(pid == 0)
-    {
-        data += 10;
-    }
-    else
-    {
-        data -= 10;
-        child_id = wait(&state);
-
-        printf("Child pid: %d \n", child_id);
-    }
-
-    printf("\tdata: %d \n", data);
 
     return 0;
 }
