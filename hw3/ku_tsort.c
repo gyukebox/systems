@@ -6,9 +6,6 @@
 
 #include "ku_tsort.h"
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-int *numbers;
-
 /*
  * main function to execute whole program
  * int argc : value must be 5
@@ -88,8 +85,6 @@ int main(int argc, char **argv)
             exit(1);
         }
     }
-
-    pthread_mutex_destroy(&mutex);
 
     /* merge sub-sorted array */
     for(i = 0; i < num_threads - 1; i++)
@@ -183,7 +178,7 @@ void merge(int first_start, int second_start, int second_end)
     free(copy);
 }
 /*
- * thread routine
+ * thread_routine
  * function that will be run in threads
  * this function will sub-sort the array
  * param void *data : any data that will be sent into thread
@@ -191,10 +186,6 @@ void merge(int first_start, int second_start, int second_end)
  */
 void *thread_routine(void *data)
 {
-    pthread_mutex_lock(&mutex);
-
     INDEX *index = (INDEX *)data;
     sort(index->start_pos, index->end_pos);
-
-    pthread_mutex_unlock(&mutex);
 }

@@ -11,6 +11,8 @@
 #include <errno.h>
 #include <fcntl.h>
 
+int *numbers;
+
 void sort(int left, int right);
 void merge(int first_start, int second_start, int second_end);
 

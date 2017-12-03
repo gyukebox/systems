@@ -15,6 +15,8 @@ typedef struct _INDEXINFO
     int end_pos;
 }INDEX;
 
+int *numbers;
+
 void sort(int left, int right);
 void merge(int first_start, int second_start, int second_end);
 void *thread_routine(void *data);

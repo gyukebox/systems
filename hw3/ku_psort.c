@@ -6,8 +6,6 @@
 
 #include "ku_psort.h"
 
-int *numbers;
-
 /*
  * main function to execute whole program
  * int argc : value must be 5
