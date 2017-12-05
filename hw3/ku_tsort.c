@@ -15,7 +15,7 @@
  * 3. Name of input file
  * 4. Name of output file
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
     INDEX *indices;
     pthread_t *threads;
@@ -43,14 +43,9 @@ int main(int argc, char **argv)
     }
 
     /* read numbers and store into number array */
-    i = 0;
-    while(!feof(fp))
+    for(i = 0; i < total_numbers; i++)
     {
-        if(fscanf(fp, "%d", (numbers + i)) != 1)
-        {
-            break;
-        }
-        i ++;
+        fscanf(fp, "%d", numbers + i);
     }
 
     fclose(fp);
